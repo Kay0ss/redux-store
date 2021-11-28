@@ -67,7 +67,11 @@ export const reducers = (state = initialState, action) => {
     /* TODO:  create a case statement for ADD_MULTIPLE_TO_CART. It should duplicate current state, 
     then update the cart array: first by duplicating the existing cart, then adding all new products 
     passed in via the action object. */
-
+      case ADD_MULTIPLE_TO_CART:
+        return {
+          ...state,
+          cart: [...state.cart, ...action.products],
+        };
 
     case UPDATE_CART_QUANTITY:
       return {
@@ -94,9 +98,20 @@ export const reducers = (state = initialState, action) => {
 
     /* TODO: create a case statement for CLEAR_CART. It should duplicate current state, 
     set cartOpen to false, and empty the cart array. */
-
+      case CLEAR_CART:
+        return { 
+          ...state,
+          cartOpen: false,
+          cart: []
+        };
     /* TODO: create a case statement for TOGGLE_CART. It should duplicate the current 
     state, then set the cartOpen variable to it's opposite value. */
+
+      case TOGGLE_CART:
+        return {
+          ...state,
+          cartOpen: !state.cartOpen
+        };
 
     case UPDATE_CATEGORIES:
       return {
@@ -108,6 +123,11 @@ export const reducers = (state = initialState, action) => {
     the current state, then modify the currentCategory to whatever is passed in via the 
     action object. */
 
+    case UPDATE_CURRENT_CATEGORY:
+      return {
+        ...state,
+        currentCategory: action.currentCategory
+      };
     
     /* If an action is called that we don't define above, then we simply return back the 
     current state. */
