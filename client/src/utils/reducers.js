@@ -127,7 +127,7 @@ export const reducers = (state = initialState, action) => {
       return {
         ...state,
         currentCategory: action.currentCategory
-      };
+      }
     
     /* If an action is called that we don't define above, then we simply return back the 
     current state. */
